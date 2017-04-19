@@ -12,5 +12,5 @@
 */
 
 Route::get('/', function () {
-    return view('Application for Notifiable Low Risk Dealings (NLRDs) suitable for Physical Containment level 2 (PC2)');
+    return view('FORM F Notification for Export of Living Modified Organism (LMO)');
 });
