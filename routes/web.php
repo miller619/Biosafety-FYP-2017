@@ -12,5 +12,5 @@
 */
 
 Route::get('/', function () {
-    return view('FormE');
+    return view('Application for Notifiable Low Risk Dealings (NLRDs) suitable for Physical Containment level 2 (PC2)');
 });
