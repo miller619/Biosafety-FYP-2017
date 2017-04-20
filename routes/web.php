@@ -12,5 +12,5 @@
 */
 
 Route::get('/', function () {
-    return view('FORM F Notification for Export of Living Modified Organism (LMO)');
+    return view('SSBC_002 Notification of LMO and Biohazardous Material');
 });
