@@ -1,8 +1,21 @@
 @extends('layouts.app')
-
 @section('content')
-<div class="container">
-    <div class="row">
+<div id="wrapper" class="active">
+  
+  <!-- Sidebar -->
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper">
+    <ul id="sidebar_menu" class="sidebar-nav">
+      <li class="sidebar-brand">menu</li>
+    </ul>
+    @include('includes.admin-sidebar')
+  </div>
+  
+  <!-- Page content -->
+  <div id="page-content-wrapper">
+    <!-- Keep all page content within the page-content inset div! -->
+    <div class="page-content inset">
+      <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
@@ -10,7 +23,7 @@
                 @if(Session::has('message'))
                     <div class="alert alert-success">{{Session::get('message')}}</div> 
                 @endif
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('admin/userList') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('create.user') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -141,6 +154,9 @@
                 </div>
             </div>
         </div>
+      </div>
     </div>
+  </div>
+  
 </div>
 @endsection
