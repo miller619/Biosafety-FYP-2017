@@ -8,6 +8,6 @@
             <li><a href="#">Accident Reporting</a></li>
             <li><a href="#">Annual report</a></li>
             <li><a href="#">Application Forms</a></li>
-            <li><a href="#">User List</a></li>
+            <li><a href="{{ url('admin/userList') }}">User List</a></li>
         </ul>
     </nav>
