@@ -21,6 +21,7 @@ class ModifyAdminsTable extends Migration
             $table->string('adminRole');
             $table->string('adminProgram');
             $table->dropColumn('job_title');
+            $table->dropColumn('admin');
         });
     }
 
@@ -33,6 +34,7 @@ class ModifyAdminsTable extends Migration
     {
         Schema::table('admins', function (Blueprint $table) {
             $table->string('job_title');
+            $table->boolean('admin');
         });
     }
 }
