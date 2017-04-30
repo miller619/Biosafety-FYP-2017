@@ -21,12 +21,14 @@ Route::get('/EDFormA', 'HomeController@getEDFormA');
 Route::get('/EDFormB', 'HomeController@getEDFormB');
 Route::get('/EDFormC', 'HomeController@getEDFormC');
 
-
+Route::post('/', 'PrintController@EDformA')->name('print.form');
 
 /*route for admin login*/
 Route::prefix('admin')->group(function(){
 	Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
 	Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+	
+
 	Route::get('/', 'AdminController@index')->name('admin.dashboard');
 
 	Route::get('/userList', 'AdminController@getuserList');
@@ -34,3 +36,7 @@ Route::prefix('admin')->group(function(){
 	Route::post('/addUser/', 'AdminController@goToRegister')->name('addUser.user');
 	Route::post('/register/', 'AdminController@create')->name('create.user');
 });
+
+
+
+

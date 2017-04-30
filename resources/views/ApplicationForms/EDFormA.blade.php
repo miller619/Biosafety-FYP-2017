@@ -21,7 +21,9 @@
                 <div class="col-xs-12">
                     <div class="well">
                         
-                        {!! Form::open(['url' => '/processform', 'class' => 'form-horizontal']) !!}
+                        <!-- {!! Form::open(['url' => '/processform', 'class' => 'form-horizontal']) !!} -->
+                        <form class="form-horizontal" role="form" method="POST" action="{{ route('print.form') }}">
+                        {{ csrf_field() }}
                         
                         <fieldset>
                             
@@ -214,14 +216,19 @@
                             </div><br>
                             
                             <!-- Submit Button -->
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
                                     {!! Form::submit('Submit', ['class' => 'btn btn-lg btn-info pull-right'] ) !!}
                                 </div>
-                            </div>
+                            </div> -->
+
                             
                         </fieldset>
+
                         
+                         <button type="submit" class="btn btn-primary">Submit</button>
+                       
+                        </form>
                         {!! Form::close()  !!}
                         
                     </div>
