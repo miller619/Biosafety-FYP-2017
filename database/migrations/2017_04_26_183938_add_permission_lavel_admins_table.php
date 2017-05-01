@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUserLevelToAdminsTable extends Migration
+class AddPermissionLavelAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,7 @@ class AddUserLevelToAdminsTable extends Migration
     public function up()
     {
         Schema::table('admins', function (Blueprint $table) {
-            //
-            $table->boolean('admin')->default(1);
+            $table->string('permissionLevel');
         });
     }
 
@@ -27,7 +26,7 @@ class AddUserLevelToAdminsTable extends Migration
     public function down()
     {
         Schema::table('admins', function (Blueprint $table) {
-            
+            //
         });
     }
 }

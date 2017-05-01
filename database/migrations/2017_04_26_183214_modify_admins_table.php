@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUserLevelToAdminsTable extends Migration
+class ModifyAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,14 @@ class AddUserLevelToAdminsTable extends Migration
     public function up()
     {
         Schema::table('admins', function (Blueprint $table) {
-            //
-            $table->boolean('admin')->default(1);
+            $table->string('adminContact')->unique();
+            $table->string('adminFax');
+            $table->string('adminAddress');
+            $table->string('adminInstitution');
+            $table->string('adminRole');
+            $table->string('adminProgram');
+            $table->dropColumn('job_title');
+            $table->dropColumn('admin');
         });
     }
 
@@ -27,7 +33,8 @@ class AddUserLevelToAdminsTable extends Migration
     public function down()
     {
         Schema::table('admins', function (Blueprint $table) {
-            
+            $table->string('job_title');
+            $table->boolean('admin');
         });
     }
 }

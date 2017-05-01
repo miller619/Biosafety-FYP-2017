@@ -12,14 +12,6 @@ function loadEDhome(){
 	
 	$('#edHome').load('/edcontent');
 }
-
-
-function approveLogin(){
-	console.log('click');
-
-}
-
-
 	
 
 
