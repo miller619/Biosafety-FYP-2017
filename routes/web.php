@@ -13,14 +13,14 @@ Route::get('/', function () {
 return view('pages.welcome');
 });
 Auth::routes();
-Route::get('/home', 'HomeController@index');
 
-//load exempt dealings content
-Route::get('/edcontent', 'HomeController@getEDContent');
-Route::get('/EDFormA', 'HomeController@getEDFormA');
-Route::get('/EDFormB', 'HomeController@getEDFormB');
-Route::get('/EDFormC', 'HomeController@getEDFormC');
-
+Route::prefix('home')->group(function(){
+	Route::get('/', 'HomeController@index');
+	Route::get('/edcontent', 'HomeController@getEDContent');
+	Route::get('/edcontent/EDFormA', 'HomeController@getEDFormA');
+	Route::get('/edcontent/EDFormB', 'HomeController@getEDFormB');
+	Route::get('/edcontent/EDFormC', 'HomeController@getEDFormC');
+});
 
 
 /*route for admin login*/

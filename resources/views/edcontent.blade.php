@@ -20,9 +20,9 @@
         <div class="col-xs-12">
           <div class="row">
             <ul>
-              <li><a href="{{ url('/EDFormA') }}">OHS-F-4.5.X HIRARC Form</a></li>
-              <li><a href="{{ url('/EDFormB') }}">SBC-Application for Biosafety Clearance for use of Exempt Dealings</a></li>
-              <li><a href="{{ url('/EDFormC') }}">SSBC_001 Safe Work Procedure V2</a></li>
+              <li><a href="{{ url('/home/edcontent/EDFormA') }}">OHS-F-4.5.X HIRARC Form</a></li>
+              <li><a href="{{ url('/home/edcontent/EDFormB') }}">SBC-Application for Biosafety Clearance for use of Exempt Dealings</a></li>
+              <li><a href="{{ url('/home/edcontent/EDFormC') }}">SSBC_001 Safe Work Procedure V2</a></li>
             </ul>
           </div>
           

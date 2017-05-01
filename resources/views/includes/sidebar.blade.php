@@ -11,7 +11,7 @@
         <!--new application drop down-->
         <ul class="sub-menu collapse" id="newApp">
             <li><a href="#" type="button">LMO</a></li>
-            <li><a href="{{ url('/edcontent') }}">Exempt Dealings</a></li>
+            <li><a href="{{ url('/home/edcontent') }}">Exempt Dealings</a></li>
             <li><a href="#">Bio-hazardous Material</a></li>
         </ul>
         
