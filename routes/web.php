@@ -13,15 +13,19 @@ Route::get('/', function () {
 return view('pages.welcome');
 });
 Auth::routes();
-Route::get('/home', 'HomeController@index');
 
-//load exempt dealings content
-Route::get('/edcontent', 'HomeController@getEDContent');
-Route::get('/EDFormA', 'HomeController@getEDFormA');
-Route::get('/EDFormB', 'HomeController@getEDFormB');
-Route::get('/EDFormC', 'HomeController@getEDFormC');
-
+<<<<<<< HEAD
 Route::post('/', 'PrintController@EDformA')->name('print.form');
+=======
+Route::prefix('home')->group(function(){
+	Route::get('/', 'HomeController@index');
+	Route::get('/edcontent', 'HomeController@getEDContent');
+	Route::get('/edcontent/EDFormA', 'HomeController@getEDFormA');
+	Route::get('/edcontent/EDFormB', 'HomeController@getEDFormB');
+	Route::get('/edcontent/EDFormC', 'HomeController@getEDFormC');
+});
+
+>>>>>>> 79af5f4669d33feca6bda961bcc10fabb1103130
 
 /*route for admin login*/
 Route::prefix('admin')->group(function(){

@@ -20,6 +20,10 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 79af5f4669d33feca6bda961bcc10fabb1103130
         });
     }
 

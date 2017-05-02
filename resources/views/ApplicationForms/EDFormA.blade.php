@@ -21,9 +21,8 @@
                 <div class="col-xs-12">
                     <div class="well">
                         
-                        <!-- {!! Form::open(['url' => '/processform', 'class' => 'form-horizontal']) !!} -->
-                        <form class="form-horizontal" role="form" method="POST" action="{{ route('print.form') }}">
-                        {{ csrf_field() }}
+                        {!! Form::open(['url' => '/processform', 'class' => 'form-horizontal']) !!}
+                        <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
                         
                         <fieldset>
                             

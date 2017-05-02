@@ -12,6 +12,7 @@ use Barryvdh\DomPDF\Facade as PDF;
 
 class PrintController extends Controller
 {
+	//this is how to download the html to pdf, we should give the proper path first
     public function EDformA()
 		{
 			$pdf = PDF::loadView('ApplicationForms.EDFormA');

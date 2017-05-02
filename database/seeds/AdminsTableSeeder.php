@@ -26,5 +26,20 @@ class AdminsTableSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
+        
+        DB::table('admins')->insert([
+            'name' => 'JiaNi2',
+            'email' => 'jiani2@yahoo.com',
+            'password' => bcrypt('123456'),
+            'adminContact'=>'12345602',
+            'adminFax' => '1224512223',
+            'adminRole' => 'Officer2',
+            'adminInstitution' => 'swinburne',
+            'adminProgram' => 'Biotech',
+            'adminAddress' => 'Swinburne',
+            'permissionLevel' => '1',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
     }
 }
