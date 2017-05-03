@@ -14,6 +14,9 @@ return view('pages.welcome');
 });
 Auth::routes();
 
+<<<<<<< HEAD
+Route::post('/', 'PrintController@EDformA')->name('print.form');
+=======
 Route::prefix('home')->group(function(){
 	Route::get('/', 'HomeController@index');
 	Route::get('/edcontent', 'HomeController@getEDContent');
@@ -22,11 +25,14 @@ Route::prefix('home')->group(function(){
 	Route::get('/edcontent/EDFormC', 'HomeController@getEDFormC');
 });
 
+>>>>>>> 79af5f4669d33feca6bda961bcc10fabb1103130
 
 /*route for admin login*/
 Route::prefix('admin')->group(function(){
 	Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
 	Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+	
+
 	Route::get('/', 'AdminController@index')->name('admin.dashboard');
 
 	Route::get('/userList', 'AdminController@getuserList');
@@ -34,3 +40,7 @@ Route::prefix('admin')->group(function(){
 	Route::post('/addUser/', 'AdminController@goToRegister')->name('addUser.user');
 	Route::post('/register/', 'AdminController@create')->name('create.user');
 });
+
+
+
+
