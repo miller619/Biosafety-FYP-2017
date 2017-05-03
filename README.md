@@ -1,7 +1,6 @@
 # Biosafety-FYP-2017
 Final Year Project
 
-<<<<<<< HEAD
 This version contain
 1. admin can add add, remove users from the admin panal
 2. seed database for user table and admin table
@@ -15,8 +14,6 @@ input the following commands
   php artisan php artisan db:seed --class=UserTableSeeder (to seed the user table)
   
   php artisan php artisan db:seed --class=AdminsTableSeeder (to seed the admin table)
-=======
 
 1. user require to be approved by admin upon registration
 2. other admin previllages
->>>>>>> 0936f9b2b70b959eb87beabeb557cc6e6cebbbb8
