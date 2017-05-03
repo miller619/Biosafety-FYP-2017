@@ -11,9 +11,9 @@ input the following commands
 
   php artisan migrate:refresh --seed (to start a fresh database seed)
   
-  php artisan php artisan db:seed --class=UserTableSeeder (to seed the user table)
+  php artisan db:seed --class=UserTableSeeder (to seed the user table)
   
-  php artisan php artisan db:seed --class=AdminsTableSeeder (to seed the admin table)
+  php artisan db:seed --class=AdminsTableSeeder (to seed the admin table)
 
 1. user require to be approved by admin upon registration
 2. other admin previllages
