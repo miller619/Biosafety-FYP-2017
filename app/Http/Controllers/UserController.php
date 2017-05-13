@@ -4,8 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\User;
+
 class UserController extends Controller
 {
+
+    public function __construct(){
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +18,10 @@ class UserController extends Controller
      */
     public function index()
     {
-    
+        $users= User::orderBy('id','DESC')->paginate(5);
+        return view('pages.userList',compact('users'))
+            ->with('i', ($request->input('page', 1) - 1) * 5);
+
     }
 
     /**
@@ -23,7 +31,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.addUser');
     }
 
     /**
@@ -34,7 +42,20 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User;
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->userContact = $request->userContact;
+            $user->userFax = $request->userFax;
+            $user->userAddress = $request->userAddress;
+            $user->userInstitution = $request->userInstitution;
+            $user->userDesignation = $request->userDesignation;
+            $user->userFaculty = $request->userFaculty;
+            $user->userInstitutionID = $request->userInstitutionID;
+            $user->password = bcrypt($request['password']);
+            $user->save();
+
+        return redirect()->route('admin.userList');
     }
 
     /**
@@ -45,7 +66,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
+        $user = User::find($id);
 
+        return view('user.showUserProfile', compact('user'));
     }
 
     /**
@@ -56,7 +79,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+
+        return view('user.updateUserProfile', compact('user'));
     }
 
     /**
@@ -67,8 +92,14 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {        
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+        ]);
+        User::find($id)->update($request->all());
+        return redirect()->route('profile.show', auth()->user()->id)
+                        ->with('success','Product updated successfully');
     }
 
     /**
@@ -79,6 +110,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->back();
     }
 }

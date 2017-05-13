@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title',  '| User List')
 @section('content')
 <div id="wrapper" class="active">
   
@@ -14,14 +15,8 @@
   <div id="page-content-wrapper">
     <!-- Keep all page content within the page-content inset div! -->
     <div class="content-fluid">
-      <div class="row">
-        <div class="col-xs-1 col-xs-push-11">
-          <form action="{{ route ('addUser.user')}}" method="POST" >
-            {{ csrf_field() }}
-            <button type="submit" class="btn btn-primary">Add User</button>
-          </form>
-        </div>
-      </div>
+      
+      <a class="btn btn-success" href="{{ route('admin.profile.create') }}"> Create New user</a>
       <div class="row">
         <div class="col-xs-12">
           <table class="table table-striped table-bordered">
@@ -30,8 +25,10 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Contact</th>
+                <th>Institution</th>
+                <th>Institution ID</th>
                 <th>Fax</th>
-                <th>Program</th>
+                <th>Faculty</th>
                 <th>Designation</th>
                 <th>Address</th>
                 <th>Date Created</th>
@@ -43,32 +40,28 @@
               <tr>
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
-
                 <td>{{$user->userContact}}</td>
+                <td>{{$user->userInstitution}}</td>
+                <td>{{$user->userInstitutionID}}</td>
                 <td>{{$user->userFax}}</td>
-                <td>{{$user->userProgram}}</td>
-                <td>{{$user->userRole}}</td>
+                <td>{{$user->userFaculty}}</td>
+                <td>{{$user->userDesignation}}</td>
                 <td>{{$user->userAddress}}</td>
                 <td>{{$user->created_at}}</td>
                 <td>
-                  <form action="{{ route('delete.user', $user->id) }}" method="POST">
-                    {{ csrf_field() }}
-                    <button type="submit" class="btn btn-danger">DELETE</button>
-                  </form>
-                  
+                  {!! Form::open(['method' => 'DELETE','route' => ['profile.destroy', $user->id],'style'=>'display:inline']) !!}
+                  {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                  {!! Form::close() !!}
                 </td>
-                }
               </tr>
             </tbody>
             @endforeach
             
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12">
-          </div>
+          </table>
         </div>
       </div>
+      
     </div>
   </div>
-  @endsection
+</div>
+@endsection

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title',  '| Admin')
+@section('title',  '| OHS')
 @section('content')
 <div id="wrapper" class="active">
   
@@ -9,7 +9,7 @@
     <ul id="sidebar_menu" class="sidebar-nav">
       <li class="sidebar-brand">menu</li>
     </ul>
-    @include('includes.admin-sidebar')
+    @include('includes.sidebar')
   </div>
   
   <!-- Page content -->
@@ -17,10 +17,16 @@
     <!-- Keep all page content within the page-content inset div! -->
     <div class="page-content inset">
       <div class="row">
-        
+        <div class="col-xs-12">
+          <div class="row">
+            <ul>
+              <li><a href="{{ url('/home/accidentedbm/accidentdbmForm') }}">OHS incident Reporting Form</a></li>
+            </ul>
+          </div>
+          
+        </div>
       </div>
     </div>
+    
   </div>
-  
-</div>
-@endsection
+  @stop

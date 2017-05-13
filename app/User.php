@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'userContact', 'userFax', 'userAddress', 'userInstitution', 'userRole', 'userProgram',
+        'name', 'email', 'password', 'userContact', 'userFax', 'userAddress', 'userInstitution', 'userDesignation', 'userInstitutionID', 'userFaculty',
     ];
 
     /**
@@ -26,4 +26,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function notification(){
+        return $this->hasMany(Notification::class);
+    }
+
+    public function notification_type_a(){
+        return $this->hasMany(NotificationTypeA::class);
+    }
+
 }
