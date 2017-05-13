@@ -1,8 +1,10 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use DB;
+use Auth;
 use App\User;
+use App\Notification;
+use App\NotificationTypeA;
 
 class AdminController extends Controller
     {
@@ -25,24 +27,13 @@ class AdminController extends Controller
             return view('pages.admin');
         }
 
-        public function goToRegister(){
-            return view('pages.addUser');
+        public function create(Request $request){
+
         }
 
-        public function create(Request $request){
-            $user = new User;
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->userContact = $request->userContact;
-            $user->userFax = $request->userFax;
-            $user->userAddress = $request->userAddress;
-            $user->userInstitution = $request->userInstitution;
-            $user->userRole = $request->userRole;
-            $user->userProgram = $request->userProgram;
-            $user->password = $request->password;
-            $user->save();
-
-            return view('pages.admin');
+        public function show($id){
+            $admin = Admin::find($id);
+            return view('admin.showAdminProfile', compact('admin'));
         }
 
         public function getuserList() 
@@ -52,14 +43,58 @@ class AdminController extends Controller
         }
 
         public function destroy($id) {
-            $user = User::find($id);
-            $user->delete();
-
-           return redirect()->back();
+            
         }
-        
-        public function userDetails()
-        {
 
+        public function adminNotificationList(){
+            
+            $data = [];
+            $data['notifications'] = Notification::where(['approved'=>0])->get();
+
+            $approvedData = [];
+            $approvedData['approvednotifications'] = Notification::where(['approved'=>2])->get();
+
+            $sendData = [];
+            $sendData['sendnotifications'] = Notification::where(['approved'=>1])->get();
+
+            return view('Notification.notification_admin', compact('data', 'approvedData', 'sendData'));
+
+        }
+
+        
+        public function adminGetEachNotification($user_id, $notification_id){
+            $userdetails = [];
+            $userdetails['userdetails'] = Notification::where(['user_id'=>$user_id])->where(['id'=>$notification_id])->get();
+
+
+            $dataList = [];
+            $dataList['notify'] = NotificationTypeA::with('notification')->where(['notification_id'=>$notification_id])->get();
+            return view('Notification.admin_notification_application', $userdetails, $dataList);
+        }
+
+
+        public function approveNotification(Request $request, $id){
+            
+            $notification = Notification::find($id);
+            /*if ($value == 0){
+            $notification->approved = '2';
+            $notification->save();
+        }else {
+            $notification->approved = '1';
+            $notification->save();
+        }*/
+        $notification->approved = $request->get('type');
+        $notification->save();
+        //dd($notification);
+            return redirect()->route('admin.notification_list');
+        }
+
+
+        public function sendNotificationToSuperAdmin($id){
+            
+            $notification = Notification::find($id);
+            $notification->approved = '1';
+            $notification->save();
+            return redirect()->route('admin.notification_list');
         }
 }

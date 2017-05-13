@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title',  '| Admin')
+@section('title',  '| Notification')
 @section('content')
 <div id="wrapper" class="active">
   
@@ -9,7 +9,7 @@
     <ul id="sidebar_menu" class="sidebar-nav">
       <li class="sidebar-brand">menu</li>
     </ul>
-    @include('includes.admin-sidebar')
+    @include('includes.sidebar')
   </div>
   
   <!-- Page content -->
@@ -17,10 +17,12 @@
     <!-- Keep all page content within the page-content inset div! -->
     <div class="page-content inset">
       <div class="row">
-        
+          
+
+
       </div>
     </div>
   </div>
   
 </div>
-@endsection
+@stop

@@ -58,8 +58,8 @@
                         @else
                         
                         <li>
-                            <a href="{{ route('profile.show', auth()->user()->id) }}" role="button" aria-expanded="false">
-                                <span>{{ Auth::user()->name }}</span>
+                            <a href="{{ route('profile.show', auth()->admin()->id) }}" role="button" aria-expanded="false">
+                                <span>{{ Auth::admin()->name }}</span>
                             </a>
                         </li>
 

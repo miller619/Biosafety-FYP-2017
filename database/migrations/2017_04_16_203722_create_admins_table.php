@@ -18,7 +18,13 @@ class CreateAdminsTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('job_title');
+            $table->string('adminContact')->unique();
+            $table->string('adminFax');
+            $table->string('adminAddress');
+            $table->string('adminInstitution');
+            $table->string('adminRole');
+            $table->string('adminProgram');
+            $table->string('permissionLevel');
             $table->rememberToken();
             $table->timestamps();
 

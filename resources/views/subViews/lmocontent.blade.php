@@ -20,9 +20,12 @@
         <div class="col-xs-12">
           <div class="row">
             <ul>
-              <li><a href="{{ url('/home/edcontent/EDFormA') }}">OHS-F-4.5.X HIRARC Form</a></li>
-              <li><a href="{{ url('/home/edcontent/EDFormB') }}">SBC-Application for Biosafety Clearance for use of Exempt Dealings</a></li>
-              <li><a href="{{ url('/home/edcontent/EDFormC') }}">SSBC_001 Safe Work Procedure V2</a></li>
+              <li><a href="{{ url('/home/lmocontent/lmoFormA') }}">Annex2</a></li>
+              <li><a href="{{ url('/home/lmocontent/lmoFormF') }}">Form E</a></li>
+              <li><a href="{{ url('/home/lmocontent/lmoFormB') }}">SBC Application for NRLDs suitable for PC1</a></li>
+              <li><a href="{{ url('/home/lmocontent/lmoFormC') }}">SBC Application for NRLDs suitable for PC2</a></li>
+              <li><a href="{{ url('/home/lmocontent/lmoFormD') }}">OHS - HIRARC</a></li>
+              <li><a href="{{ url('/home/lmocontent/lmoFormE') }}">SSBC_001 Safe Work Procedure</a></li>
             </ul>
           </div>
           
