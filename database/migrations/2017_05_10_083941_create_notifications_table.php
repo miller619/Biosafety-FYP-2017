@@ -23,7 +23,6 @@ class CreateNotificationsTable extends Migration
             $table->string('storage_location');
             $table->string('keeper_name');
             $table->integer('approved')->default(0);
-            $table->date('approved_at');
             $table->integer('user_id')->unsigned();            
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 

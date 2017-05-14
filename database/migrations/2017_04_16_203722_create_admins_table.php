@@ -22,9 +22,7 @@ class CreateAdminsTable extends Migration
             $table->string('adminFax');
             $table->string('adminAddress');
             $table->string('adminInstitution');
-            $table->string('adminRole');
-            $table->string('adminProgram');
-            $table->string('permissionLevel');
+            $table->integer('adminRole');
             $table->rememberToken();
             $table->timestamps();
 

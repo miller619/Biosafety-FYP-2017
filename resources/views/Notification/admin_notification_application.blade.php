@@ -148,19 +148,26 @@
       <br/>
       <br/>
       <br/>
+      @if ($userdetail->approved < 2)
       {!! Form::open(['method' => 'GET', 'route' => ['show.approve_notification_application', $userdetail->id], 'style'=>'display:inline']) !!}
         {!! Form::hidden('type', 2) !!}
         {!! Form::submit('Accpet', ['class' => 'btn btn-success']) !!}
       {!! Form::close() !!}
 
+      @if ($userdetail->approved == 0)
       {!! Form::open(['method' => 'GET', 'route' => ['show.approve_notification_application', $userdetail->id], 'style'=>'display:inline']) !!}
         {!! Form::hidden('type', 1) !!}
         {!! Form::submit('Send to Super Admin', ['class' => 'btn btn-success']) !!}
       {!! Form::close() !!}
+      @endif
 
-      {!! Form::open(['method' => '','style'=>'display:inline']) !!}
+      @if ($userdetail->approved != -1)
+      {!! Form::open(['method' => 'GET', 'route' => ['show.approve_notification_application', $userdetail->id],'style'=>'display:inline']) !!}
+      {!! Form::hidden('type', -1) !!}
         {!! Form::submit('Decline', ['class' => 'btn btn-danger']) !!}
       {!! Form::close() !!}
+      @endif
+      @endif
     </div>
   </div>
 </div>
