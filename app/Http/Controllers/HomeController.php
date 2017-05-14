@@ -111,12 +111,15 @@ class HomeController extends Controller
     public function getNotificationPage()
     {
         $data = [];
-        $data['notifications'] = Notification::with('user')->where('user_id', Auth::user()->id)->where(['approved'=>0])->get();
+        $data['notifications'] = Notification::where('approved', '<=', 1)->with('user')->where('user_id', Auth::user()->id)->get();
 
         $approvedData = [];
-        $approvedData['approvednotifications'] = Notification::with('user')->where('user_id', Auth::user()->id)->where(['approved'=>3])->get();
+        $approvedData['approvednotifications'] = Notification::where(['approved'=>2])->with('user')->where('user_id', Auth::user()->id)->get();
+
+        $declined = [];
+        $declined['declinedData'] = Notification::where(['approved'=>2])->with('user')->where('user_id', Auth::user()->id)->get();
         //dd($approvedData);
-        return view('subViews.notification', $data, $approvedData);
+        return view('subViews.notification', compact('data', 'approvedData', 'declined'));
     }
     /*show the form for notification of living modified organism*/
     public function getNotificationForm(){

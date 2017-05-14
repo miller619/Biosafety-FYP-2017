@@ -13,31 +13,53 @@ class AdminsTableSeeder extends Seeder
     public function run()
     {
         DB::table('admins')->insert([
-            'name' => 'JiaNi',
-            'email' => 'jiani@yahoo.com',
+            'name' => 'Admin',
+            'email' => 'admin@yahoo.com',
             'password' => bcrypt('123456'),
             'adminContact'=>'1234560',
             'adminFax' => '12245123',
-            'adminRole' => 'Officer',
+            'adminRole' => 1,
             'adminInstitution' => 'swinburne',
-            'adminProgram' => 'Biotech',
             'adminAddress' => 'Swinburne',
-            'permissionLevel' => '1',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
         
         DB::table('admins')->insert([
-            'name' => 'JiaNi2',
-            'email' => 'jiani2@yahoo.com',
+            'name' => 'admin2',
+            'email' => 'superadmin2@yahoo.com',
             'password' => bcrypt('123456'),
             'adminContact'=>'12345602',
             'adminFax' => '1224512223',
-            'adminRole' => 'Officer2',
+            'adminRole' => 2,
             'adminInstitution' => 'swinburne',
-            'adminProgram' => 'Biotech',
             'adminAddress' => 'Swinburne',
-            'permissionLevel' => '1',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        DB::table('admins')->insert([
+            'name' => 'admin3',
+            'email' => 'superadmin3@gmail.com',
+            'password' => bcrypt('123456'),
+            'adminContact'=>'12345603',
+            'adminFax' => '1224512223',
+            'adminRole' => 2,
+            'adminInstitution' => 'swinburne',
+            'adminAddress' => 'Swinburne',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        DB::table('admins')->insert([
+            'name' => 'admin3',
+            'email' => 'superadmin4@yahoo.com',
+            'password' => bcrypt('123456'),
+            'adminContact'=>'12345604',
+            'adminFax' => '1224512223',
+            'adminRole' => 2,
+            'adminInstitution' => 'swinburne',
+            'adminAddress' => 'Swinburne',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);

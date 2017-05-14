@@ -25,6 +25,7 @@ class NotificationController extends Controller
     }
 
     public function getNotificationApplication($user_id, $notification_id){
+        
         $userdetails = [];
         $userdetails['userdetails'] = Notification::where(['user_id'=>$user_id])->where(['id'=>$notification_id])->get();
 

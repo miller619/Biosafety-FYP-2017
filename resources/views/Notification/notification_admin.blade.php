@@ -25,9 +25,9 @@
           
         </div>
       </div>
-      
-      <br/>
-      
+      @foreach ($admin['admins'] as $admin)
+      @endforeach
+      @if ($admin->adminRole == 1)
       <h2>New Application</h2>
       <div class="row">
         <div class="col-xs-12">
@@ -51,7 +51,36 @@
           </table>
         </div>
       </div>
+      @endif
       
+      <br/>
+      <h2>Pending Approval from Super Admin</h2>
+      <div class="row">
+        <div class="col-xs-12">
+          <table border="1">
+            <thead>
+              <tr>
+                <td>Notification ID</td>
+                <td>Name of Applicant</td>
+                <td>Applied date</td>
+                <td>Approved</td>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($sendData['sendnotifications'] as $send)
+              
+              <tr>
+                <td>{{ $send->id }}</td>
+                <td><a href="/admin/notification_list/notification_application/{{$send->user->id}}/{{$send->id}}">{{ $send->user->name }}</a></td>
+                <td>{{$send->created_at->todatestring()}}</td>
+                <td>Approval Pending</td>
+              </tr>
+              
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+      </div>
       <br/>
       
       <h2>Approved Application</h2>
@@ -72,18 +101,19 @@
               
               <tr>
                 <td>{{ $approvednotification->id }}</td>
-                <td><a href="/home/notification/notification_application/{{$approvednotification->user->id}}/{{$approvednotification->id}}">{{ $approvednotification->user->name }}</a></td>
+                <td><a href="/admin/notification_list/notification_application/{{$approvednotification->user->id}}/{{$approvednotification->id}}">{{ $approvednotification->user->name }}</a></td>
                 <td>{{$approvednotification->created_at->todatestring()}}</td>
                 <td>Approved</td>
+                <td>{{$approvednotification->updated_at->todatestring()}}</td>
               </tr>
               
               @endforeach
             </tbody>
           </table>
         </div>
-      </div>  
+      </div>
 
-      <h2>Pending Approval from Super Admin</h2>
+      <h2>Declined Application</h2>
       <div class="row">
         <div class="col-xs-12">
           <table border="1">
@@ -97,21 +127,22 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($sendData['sendnotifications'] as $send)
+              @foreach($declined['declinedData'] as $decline)
               
               <tr>
-                <td>{{ $send->id }}</td>
-                <td><a href="/home/notification/notification_application/{{$send->user->id}}/{{$send->id}}">{{ $send->user->name }}</a></td>
-                <td>{{$send->created_at->todatestring()}}</td>
-                <td>Approval Pending</td>
+                <td>{{ $decline->id }}</td>
+                <td><a href="/admin/notification_list/notification_application/{{$decline->user->id}}/{{$decline->id}}">{{ $decline->user->name }}</a></td>
+                <td>{{$decline->created_at->todatestring()}}</td>
+                <td>Declined</td>
+                <td>{{$decline->updated_at->todatestring()}}</td>
               </tr>
               
               @endforeach
             </tbody>
           </table>
         </div>
-      </div> 
-
+      </div>
+      
     </div>
   </div>
 </div>

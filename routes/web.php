@@ -63,6 +63,8 @@ Route::prefix('home')->group(function(){
 		/*post living modified organism list*/
 		Route::post('/personal_information_notification_form/add_lmo/', 'NotificationTypeAController@create')->name('submit.add_lmo');
 
+
+
 		Route::get('/notification_application/{user_id}/{notification_id}', 'NotificationController@getNotificationApplication')->name('show.notification_application');
 	});
 
@@ -110,9 +112,9 @@ Route::prefix('admin')->group(function(){
 	Route::post('profile', 'UserController@store')->name('admin.profile.store');
 
 	Route::get('/userList', 'AdminController@getuserList')->name('admin.userList');
-	Route::get('/adminProfile', 'AdminController@show')->name('admin.adminProfile');
+	Route::get('/admin_profile/{admin_id}', 'AdminController@show')->name('admin.show');
 
-	Route::get('/notification_list', 'AdminController@adminNotificationList')->name('admin.notification_list');
+	Route::get('/notification_list/', 'AdminController@adminNotificationList')->name('admin.notification_list');
 
 	Route::get('/notification_list/notification_application/{user_id}/{notification_id}', 'AdminController@adminGetEachNotification')->name('show.notification_application');
 

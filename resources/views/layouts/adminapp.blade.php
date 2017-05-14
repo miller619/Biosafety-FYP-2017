@@ -36,7 +36,7 @@
                         <span class="icon-bar"></span>
                         </button>
                         <!-- Branding Image -->
-                        <a class="navbar-brand" href="{{ url('/home') }}">
+                        <a class="navbar-brand" href="{{ url('/admin') }}">
                             SSBC Online Application System
                         </a>
                     </div>
@@ -58,8 +58,8 @@
                         @else
                         
                         <li>
-                            <a href="{{ route('profile.show', auth()->admin()->id) }}" role="button" aria-expanded="false">
-                                <span>{{ Auth::admin()->name }}</span>
+                            <a href="{{ route('admin.show', auth()->user()->id) }}" role="button" aria-expanded="false">
+                                <span>{{ Auth::user()->name }}</span>
                             </a>
                         </li>
 

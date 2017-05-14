@@ -37,7 +37,7 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($notifications as $notification)
+              @foreach($data['notifications'] as $notification)
               
               <tr>                
                 <td>{{ $notification->id }}</td>
@@ -66,13 +66,44 @@
               </tr>
             </thead>
             <tbody>
-             @foreach($approvednotifications as $approvednotification)
+             @foreach($approvedData['approvednotifications'] as $approvednotification)
               
               <tr>                
                 <td>{{ $approvednotification->id }}</td>
                 <td><a href="/home/notification/notification_application/{{$approvednotification->user->id}}/{{$approvednotification->id}}">{{ $approvednotification->user->name }}</a></td>
                 <td>{{$approvednotification->created_at->todatestring()}}</td>
                 <td>Approved</td>
+                <td>{{$approvednotification->created_at->todatestring()}}</td>
+              </tr>
+              
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h2>Declined Application</h2>
+      <div class="row">
+        <div class="col-xs-12">
+          <table border="1">
+            <thead>
+              <tr>
+                <td>Notification ID</td>
+                <td>Name of Applicant</td>
+                <td>Applied date</td>
+                <td>Approved</td>
+                <td>Approved Date</td>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($declined['declinedData'] as $decline)
+              
+              <tr>
+                <td>{{ $decline->id }}</td>
+                <td><a href="/home/notification/notification_application/{{$decline->user->id}}/{{$decline->id}}">{{ $decline->user->name }}</a></td>
+                <td>{{$decline->created_at->todatestring()}}</td>
+                <td>Declined</td>
+                <td>{{$decline->updated_at->todatestring()}}</td>
               </tr>
               
               @endforeach
