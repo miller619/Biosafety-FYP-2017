@@ -31,7 +31,17 @@ Route::prefix('home')->group(function(){
 		Route::get('/', 'HomeController@getEDContent');
 		Route::get('/EDFormA', 'HomeController@getEDFormA');
 		Route::get('/EDFormB', 'HomeController@getEDFormB');
-		Route::get('/EDFormC', 'HomeController@getEDFormC');
+		Route::post('/EDFormB1/submit', 'EDFormB1Controller@create');
+		
+	
+		Route::post('/EDFormB2/Submit', 'EDFormB2Controller@create');
+
+
+		Route::post('/EDFormB3/Submit', 'EDFormB3Controller@create');
+		
+		Route::post('/EDFormB3_2/Submit', 'EDFormB3_2Controller@create');
+		
+		Route::post('/EDFormB4/Submit', 'EDFormB4Controller@create');
 	});
 
 	Route::prefix('bmcontent')->group(function(){
@@ -119,6 +129,15 @@ Route::prefix('admin')->group(function(){
 	Route::get('/notification_list/notification_application/{user_id}/{notification_id}', 'AdminController@adminGetEachNotification')->name('show.notification_application');
 
 	Route::get('/notification_list/notification_application/{notification_id}', 'AdminController@approveNotification')->name('show.approve_notification_application');
+
+	Route::get('/clearence_list/', 'AdminController@adminClearenceList')->name('Clearence.clearence_admin');
+
+	Route::get('/clearence_list/Clearence_application/{user_id}/{id}', 'AdminController@adminGetEachClearence')->name('Clearence.admin_clearence_application');
+	
+	Route::get('/userList', 'AdminController@getuserList')->name('admin.userList');
+	Route::get('/adminProfile', 'AdminController@show2')->name('admin.adminProfile');
+
+	Route::get('/notification_list/notification_application/{notification_id}', 'AdminController@approveClearence')->name('show.approve_clearence_application');
 
 });
 

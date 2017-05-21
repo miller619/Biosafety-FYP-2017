@@ -6,6 +6,11 @@ use App\User;
 use App\Notification;
 use App\NotificationTypeA;
 use App\Admin;
+use App\EDForm1;
+use App\EDFormB2;
+use App\EDFormB3;
+use App\EDFormB3_2;
+use App\EDFormB4;
 
 class AdminController extends Controller
     {
@@ -90,4 +95,64 @@ class AdminController extends Controller
             $notification->save();
             return redirect()->route('admin.notification_list');
         }
+
+         public function adminClearenceList(){
+                
+                $admin = [];
+                $admin['admin']= Admin::where('id', Auth::user()->id)->get();
+
+                $clearence = [];
+                $clearence['clearence'] = EDForm1::where(['approved'=>0])->get();
+
+                $approvedData = [];
+                $approvedData['approvedData'] = EDForm1::where(['approved'=>2])->with('user')->get();
+
+                $sendData = [];
+                $sendData['sendData'] = EDForm1::where(['approved'=>1])->with('user')->get();
+
+                $declined = [];
+                $declined['declined'] = EDForm1::where(['approved'=> -1])->get();
+                    
+                // dd($approvedData, $sendData, $declined );
+                return view('Clearence.clearence_admin', compact('admin', 'clearence', 'approvedData', 'sendData', 'declined'));
+            
+        }
+
+        public function adminGetEachClearence($user_id, $id){
+
+
+            $userdetail = [];
+            $userdetail = EDForm1::where(['user_id'=>$user_id])->where(['id'=>$id])->get();
+            
+             $edform2 = [];
+             $edform2 = EDFormB2::where(['ed_form_id'=>$id])->get();
+
+             $edform3 = [];
+             $edform3 = EDFormB3::where(['ed_form_id'=>$id])->get();
+
+             $edform3_2 = [];
+             $edform3_2 = EDFormB3_2::where(['ed_form_id'=>$id])->get();
+
+             $edform4 = [];
+             $edform4 = EDFormB4::where(['ed_form_id'=>$id])->get();
+
+            // return response($edform3);
+            //dd(  );
+
+            return view('Clearence.admin_clearence_application', compact('userdetail', 'edform2', 'edform3', 'edform3_2', 'edform4'));
+        }
+
+        public function show2($id){
+            $admin = Admin::find($id);
+            return view('admin.showAdminProfile', compact('admin'));
+        }
+
+        public function approveClearence(Request $request, $id){
+            
+            $clearence = EDForm1::find($id);
+            $clearence->approved = $request->get('type');
+            $clearence->save();
+            return redirect()->route('Clearence.clearence_admin');
+        }
+
 }

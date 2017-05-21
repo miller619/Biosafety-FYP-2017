@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Notification;
+use App\EDForm1;
+use App\EDFormB2;
+use App\EDFormB3;
+use App\EDFormB3_2;
+use App\EDFormB4;
 
 class HomeController extends Controller
 {
@@ -66,7 +71,26 @@ class HomeController extends Controller
 
     public function getEDContent()
     {
-        return view('subViews.edcontent');
+        $clearence = [];
+        $clearence['clearence'] = EDForm1::where('approved', '=>', 0)->with('user')->where('user_id', Auth::user()->id)->get();
+
+
+        $approved = [];
+        $approved['approved'] = EDForm1::where(['approved' => 2])->with('user')->where('user_id', Auth::user()->id)->get();
+
+        $declined = [];
+        $declined['declined'] = EDForm1::where(['approved' => -1])->with('user')->where('user_id', Auth::user()->id)->get();
+
+        $sendData = [];
+        $sendData['sendData'] = EDForm1::where(['approved'=>1])->with('user')->get();
+
+        //dd($declined);
+
+        // return response($declined);
+
+        // return view('subViews.edcontent');
+        
+        return view('subViews.edcontent', compact('clearence', 'approved', 'declined', 'sendData'));
     }
 
     public function getEDFormA()
@@ -75,7 +99,7 @@ class HomeController extends Controller
     }
     public function getEDFormB()
     {
-        return view('ApplicationForms.sbcED');
+        return view('Clearence.EDFormB1');
     }
     public function getEDFormC()
     {
