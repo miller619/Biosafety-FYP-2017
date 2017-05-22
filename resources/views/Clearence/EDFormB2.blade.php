@@ -14,10 +14,11 @@
         <!-- Keep all page content within the page-content inset div! -->
 	<div class="page-content inset">
 
-    
+    @include('includes._messages')
 
 		<div class="well">
-            {!! Form::open(['url' => '/home/edcontent/EDFormB2/Submit', 'class' => 'form-horizontal'])!!}
+            {!! Form::open(['method' => 'POST', 'route' => ['show.fromB3', Auth::user()->id], 'class' => 'form-horizontal']) !!}
+            
             
             <div class="row">
                 <div class="col-xs-12">
@@ -32,7 +33,9 @@
             <div class="row">
                 <div class="col-xs-12">
                     {!! Form::label('ed_form_id', '1.Clearence ID:', ['class' => 'form-label']) !!}
-                    {!! Form::text('ed_form_id', "$clearence->id", ['id'=>'ed_form_id', 'class' => 'form-control' ])!!}
+                    {!! Form::text('ed_form_id', "$id", ['id'=>'ed_form_id', 'class' => 'form-control' ])!!}
+                
+                    
                 </div>   
             </div>
             <div class="row">
@@ -77,9 +80,10 @@
                     {{ Form::email('email_address', 'noreply@gmail.com', ['id' => 'email_address', 'class' => 'form-control']) }}
                 </div>
             </div>
+
             <div class="row">
-                <div class="col-xs-6 col-xs-offset-6">
-                     {!! Form::submit('Next', ['class' => 'btn btn-lg btn-info btn-block'] ) !!}    
+                <div class="col-xs-12">
+                    {!! Form::submit('Next', ['class' => 'btn btn-lg btn-info btn-block'] ) !!}   
                 </div>
             </div>
                                      

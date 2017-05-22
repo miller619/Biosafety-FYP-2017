@@ -25,7 +25,7 @@ class CreateEDFormB3sTable extends Migration
             $table->string('email_address');
             
             $table->integer('ed_form_id')->unsigned();            
-            $table->foreign('ed_form_id')->references('id')->on('e_d_form1s');
+            $table->foreign('ed_form_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();
         });

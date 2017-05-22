@@ -43,7 +43,7 @@
           @foreach($clearence['clearence'] as $clearence)    
               <tr>
                 <td>{{ $clearence->id}}</td>
-                <td><a href="/admin/clearence_list/Clearence_application/{{$clearence->user->id}}/{{$clearence->id}}">{{ $clearence->user->name}}</a></td>
+                <td><a href="/admin/clearence_list/Clearence_application/{{$clearence->user_id}}/{{$clearence->id}}">{{ $clearence->user->name}}</a></td>
                 <td>{{ $clearence->created_at}}</td>
               </tr>
           @endforeach    

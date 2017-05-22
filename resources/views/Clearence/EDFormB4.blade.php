@@ -16,7 +16,7 @@
         <!-- Keep all page content within the page-content inset div! -->
 	<div class="page-content inset">
 
-   
+   @include('includes._messages')
 		<div class="well">
 			{!! Form::open(['url' => '/home/edcontent/EDFormB4/Submit', 'class' => 'form-horizontal']) !!}
         {{ csrf_field() }}
@@ -25,7 +25,7 @@
           <div class="row">
               <div class="col-xs-12">
                   {!! Form::label('ed_form_id', '1.Clearence ID:', ['class' => 'form-label']) !!}
-                  {!! Form::text('ed_form_id', "$clearence->id", ['id'=>'ed_form_id', 'class' => 'form-control' ])!!}
+                  {!! Form::text('ed_form_id', "$id", ['id'=>'ed_form_id', 'class' => 'form-control' ])!!}
               </div>   
           </div>
           <div class="row">

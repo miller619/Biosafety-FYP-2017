@@ -16,10 +16,10 @@
         <!-- Keep all page content within the page-content inset div! -->
 	<div class="page-content inset">
 
-    
+     @include('includes._messages')
     
 		<div class="well">
-			{!! Form::open(['url' => '/home/edcontent/EDFormB1/submit', 'class' => 'form-horizontal']) !!}
+			{!! Form::open(['method' => 'POST', 'route' => ['show.fromB2', Auth::user()->id], 'class' => 'form-horizontal']) !!}
 				<div class="row">
 					<div class="col-md-12"> 
 						{!! Form::label('Title', '1.Title:', ['class' => 'control-label']) !!}
@@ -111,7 +111,7 @@
 			{!! Form::submit('Next', ['class' => 'btn btn-lg btn-info btn-block'] ) !!}
 		  
         
-	
+	{{ Form::close() }}
     </div>
     </div>
     </div>

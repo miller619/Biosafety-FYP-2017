@@ -31,16 +31,19 @@ Route::prefix('home')->group(function(){
 		Route::get('/', 'HomeController@getEDContent');
 		Route::get('/EDFormA', 'HomeController@getEDFormA');
 		Route::get('/EDFormB', 'HomeController@getEDFormB');
-		Route::post('/EDFormB1/submit', 'EDFormB1Controller@create');
+		Route::post('/EDFormB1/submit/{id}', 'EDFormB1Controller@create')->name('show.fromB2');
 		
-	
-		Route::post('/EDFormB2/Submit', 'EDFormB2Controller@create');
+//		Route::get('/EDFormB2/submit', 'EDFormB2Controller@create');
+		Route::get('/EDFormB1/submit/{id}', 'EDFormB1Controller@getEDFormB2')->name('show.fromB2');
+		Route::post('/EDFormB2/submit/{id}', 'EDFormB2Controller@create')->name('show.fromB3');
 
+		Route::get('/EDFormB2/submit/{id}', 'EDFormB2Controller@getEDFormB3')->name('show.fromB3');
+		Route::post('/EDFormB3/submit/{id}', 'EDFormB3Controller@create')->name('show.fromB3_2');
+		
+		Route::get('/EDFormB3/submit/{id}', 'EDFormB3Controller@getEDFormB3_2')->name('show.fromB3_2');
+		Route::post('/EDFormB3_2/submit/{id}', 'EDFormB3_2Controller@create')->name('show.fromB4');
 
-		Route::post('/EDFormB3/Submit', 'EDFormB3Controller@create');
-		
-		Route::post('/EDFormB3_2/Submit', 'EDFormB3_2Controller@create');
-		
+		Route::get('/EDFormB3_2/submit/{id}', 'EDFormB3_2Controller@getEDFormB4')->name('show.fromB4');
 		Route::post('/EDFormB4/Submit', 'EDFormB4Controller@create');
 	});
 
@@ -68,10 +71,23 @@ Route::prefix('home')->group(function(){
 		/*route to lmo_notification_form*/
 		Route::get('/personal_information_notification_form', 'HomeController@getNotificationForm');
 		/*route to biohazardous material notification form*/
-		Route::post('personal_information_notification_form/submit', 'NotificationController@create')->name('submit.personal_info_for_notification');
+		Route::post('personal_information_notification_form/submit/', 'NotificationController@create')->name('submit.personal_info_for_notification');
+	
+		
+
 		Route::get('/biohazardous_material_notification_form', 'HomeController@getotherNotificationForm')->name('show.biohazardous_material_notification_form');
-		/*post living modified organism list*/
+		
 		Route::post('/personal_information_notification_form/add_lmo/', 'NotificationTypeAController@create')->name('submit.add_lmo');
+
+		
+
+		
+
+
+	
+		
+
+		
 
 
 
@@ -137,7 +153,7 @@ Route::prefix('admin')->group(function(){
 	Route::get('/userList', 'AdminController@getuserList')->name('admin.userList');
 	Route::get('/adminProfile', 'AdminController@show2')->name('admin.adminProfile');
 
-	Route::get('/notification_list/notification_application/{notification_id}', 'AdminController@approveClearence')->name('show.approve_clearence_application');
+	Route::get('/clearence_list/clearence_application/{clearence_id}', 'AdminController@approveClearence')->name('show.approve_clearence_application');
 
 });
 

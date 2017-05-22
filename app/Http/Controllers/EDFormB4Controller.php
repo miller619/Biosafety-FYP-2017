@@ -8,12 +8,12 @@ use App\EDFormB2;
 use App\EDFormB3;
 use App\EDFormB3_2;
 
-
+use Session;
 use App\User;
 
 
 use Auth;
-use Session;
+
 
 use Illuminate\Http\Request;
 
@@ -22,13 +22,7 @@ class EDFormB4Controller extends Controller
      public function create(Request $request)
     {
 
-        // $this->validate($request, array(
-        //         'one'   =>   'required|max:255',
-        //         'two'   =>   'required|max:255',
-        //         'three' =>   'required|max:255',
-        //         'four'  =>   'required|max:255',
-        //         'five'  =>   'required|max:255'
-        //     ));
+       
 
     	 $clearence = EDFormB4::create(
     	 	[
@@ -42,7 +36,7 @@ class EDFormB4Controller extends Controller
 			]
 		);
     	//dd($clearence);
-         //Session::flash('success', 'Previous Form Was successfully saved Thank you');
+         Session::flash('success', 'Previous Form Was successfully saved Thank you');
          
          return redirect('/home/edcontent');
     	 

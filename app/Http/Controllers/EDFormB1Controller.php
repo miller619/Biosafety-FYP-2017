@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use App\EDForm1;
 use Auth;
-//use Session;
+use Session;
 
 use Illuminate\Http\Request;
 
 class EDFormB1Controller extends Controller
 {
 
-	 public function create(Request $request)
+	 public function create(Request $request, $id)
     {
 
     	$this->validate($request, array(
@@ -22,7 +22,6 @@ class EDFormB1Controller extends Controller
                 'Room_No'  			=>   'required|max:255',
                 'Containment_No'  	=>   'required|max:255',
                 'Certificate_No'  	=>   'required|max:255',
-                'radio'  			=>   'required|max:255',
                 'name_of_officer'  	=>   'required|max:255',
                 'name_lab_mngr'  	=>   'required|max:255'
 
@@ -40,19 +39,29 @@ class EDFormB1Controller extends Controller
 				'radio'				=>	$request->Awareness,
 				'name_of_officer'	=>	$request->name_of_officer,
 				'name_lab_mngr'		=>	$request->name_lab_mngr,
-				
-				'user_id'			=>	Auth::user()->id
+				'user_id'			=>	$id
 			]
 		);
 
-    	//Session::flash('success', 'Previous Form Was successfully saved Thank you');
+    	Session::flash('success', 'Previous Form Was successfully saved Thank you');
 
-    	 //dd($clearence);
-    	 return view('Clearence.EDFormB2')->with('clearence', $clearence);
+    	 // dd($clearence);
+    	 //return view('Clearence.EDFormB2')->with('clearence', $clearence);
+    	
+
+    	
+    	return redirect()->route('show.fromB2', $id);
 	}
 
 	// public function getClearenceApplication($user_id, $clearence_id){
 
 		
 	// }
+	public function getEDFormB2($id){		 
+		
+		return view('Clearence.EDFormB2')->with('id', $id);
+
+	}
+
+	
 }

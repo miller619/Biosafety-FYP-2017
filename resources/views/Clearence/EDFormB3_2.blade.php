@@ -14,19 +14,20 @@
         <!-- Keep all page content within the page-content inset div! -->
 	<div class="page-content inset">
 
+    @include('includes._messages')
     
 		<div class="row ">
                 <div class="col-xs-12">
                     <div class="well">
-                       {!! Form::open(['url' => '/home/edcontent/EDFormB3_2/Submit', 'class' => 'form-horizontal']) !!}
-                        {{ csrf_field() }}
+                      
+                        {!! Form::open(['method' => 'POST', 'route' => ['show.fromB4', Auth::user()->id], 'class' => 'form-horizontal']) !!}
 
                             <fieldset>
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <div class="row">
                                             <legend>
-                                                3.Additional people to be included in correspondence regarding this dealing 
+                                                3.2.Additional people to be included in correspondence regarding this dealing 
                                             </legend>
                                             <div class="col-xs-12">
                                                 <h4>e.g. Research Assistants, Biosafety Officers, Facility Managers</h4>
@@ -37,7 +38,7 @@
                                     <div class="row">
                                         <div class="col-xs-12">
                                             {!! Form::label('ed_form_id', '1.Clearence ID:', ['class' => 'form-label']) !!}
-                                            {!! Form::text('ed_form_id', "$clearence->id", ['id'=>'ed_form_id', 'class' => 'form-control' ])!!}
+                                            {!! Form::text('ed_form_id', "$id", ['id'=>'ed_form_id', 'class' => 'form-control' ])!!}
                                         </div>   
                                     </div>
                                     <div class="row">
