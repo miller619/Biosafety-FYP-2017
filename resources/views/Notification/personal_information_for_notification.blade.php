@@ -16,6 +16,7 @@
 	<div id="page-content-wrapper">
 		<!-- Keep all page content within the page-content inset div! -->
 		<div class="page-content inset">
+		@include('includes._messages')
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="well">
@@ -61,8 +62,8 @@
 							</fieldset>
 							<div class="row">
 								<div class="form-group">
-									<div class="col-md-6 col-md-offset-10">
-										<button type="submit" class="btn btn-primary">Submit</button>
+									<div class="col-md-12">
+										<button type="submit" class="btn btn-primary btn-block">Next</button>
 									</div>
 								</div>
 							</div>

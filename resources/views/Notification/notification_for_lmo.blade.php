@@ -19,7 +19,7 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="well">
-						<form class="form-horizontal" role="form" method="POST" action="{{ route('submit.add_lmo') }}">
+						<form class="form-horizontal" role="form" method="POST" action="{{ route('submit.add_lmo', $notification->id) }}">
 							{{ csrf_field() }}
 
 							<fieldset>
