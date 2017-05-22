@@ -10,7 +10,7 @@
 |
 */
 Route::get('/', function () {
-return view('welcome');
+	return view('welcome');
 });
 Auth::routes();
 
@@ -97,12 +97,16 @@ Route::prefix('home')->group(function(){
 		Route::get('/annual_report_formC', 'HomeController@getreportFormC');
 	});
 
-	
+	Route::prefix('profile')->group(function(){
+		Route::get('/reset_password/{user_id}', 'HomeController@getResetpassword')->name('show.change_password_form');
+		Route::post('/reset_password/{user_id}/update', 'UserController@updatepassword')->name('profile.update_password');
+
+	});
+
 	
 });
 
 
-Route::resource('/profile', 'UserController');
 /*route for admin login*/
 Route::prefix('admin')->group(function(){
 	Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
@@ -118,8 +122,11 @@ Route::prefix('admin')->group(function(){
 
 	Route::get('/notification_list/notification_application/{user_id}/{notification_id}', 'AdminController@adminGetEachNotification')->name('show.notification_application');
 
-	Route::get('/notification_list/notification_application/{notification_id}', 'AdminController@approveNotification')->name('show.approve_notification_application');
+	Route::get('/notification_list/notification_application/{user_id}/{notification_id}/approve', 'AdminController@approveNotification')->name('show.approve_notification_application');
 
 });
+
+
+Route::resource('/profile', 'UserController');
 
 

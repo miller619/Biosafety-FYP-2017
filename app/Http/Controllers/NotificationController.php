@@ -12,6 +12,7 @@ class NotificationController extends Controller
 {
     public function create(Request $request)
     {
+
         $notification = Notification::create([
             'unit_code'=>$request->unit_code,
             'unit_title'=>$request->unit_title,

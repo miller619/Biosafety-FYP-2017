@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\NotificationTypeA;
 use App\Notification;
+use App\Notifications\NewNotificationApplicationSubmitted;
+use App\Admin;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -26,6 +28,11 @@ class NotificationTypeAController extends Controller
             ]);
         }
 
-        return redirect()->route('show.go_to_notification');
+        $admin = Admin::find(1);
+        $user = Auth::user();
+        $notification = Notification::find($request->notification_id);
+        $admin->notify(new NewNotificationApplicationSubmitted($user->name, $notification->id));
+
+        return redirect()->route('show.go_to_notification')->with('message', 'We have notified '.$user->name.' that he/she is added to SSBC')->with('status', 'info');
     }
 }

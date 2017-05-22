@@ -93,6 +93,14 @@
           <a class="btn btn-primary" href="{{ route('profile.edit',$user->id) }}">Edit</a>
         </div>
       </div>
+
+
+      <div class="row">
+        <div class="col-xs-12">
+          <a class="btn btn-primary" href="{{ route('show.change_password_form',$user->id) }}">change Password</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
