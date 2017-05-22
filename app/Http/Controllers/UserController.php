@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Notifiable;
+use App\Notifications\NewUserAdded;
 
 use App\User;
+use Hash;
 
 class UserController extends Controller
 {
 
+    use Notifiable;
     public function __construct(){
     }
     /**
@@ -42,6 +47,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
         $user = new User;
             $user->name = $request->name;
             $user->email = $request->email;
@@ -55,7 +61,10 @@ class UserController extends Controller
             $user->password = bcrypt($request['password']);
             $user->save();
 
-        return redirect()->route('admin.userList');
+            $user->notify(new NewUserAdded($user->name));
+
+            //dd($user);
+        return redirect()->route('admin.userList')->with('message', 'We have notified '.$user->name.' that he/she is added to SSBC')->with('status', 'info');
     }
 
     /**
@@ -99,7 +108,7 @@ class UserController extends Controller
         ]);
         User::find($id)->update($request->all());
         return redirect()->route('profile.show', auth()->user()->id)
-                        ->with('success','Product updated successfully');
+                        ->with('success','profile updated successfully');
     }
 
     /**
@@ -114,4 +123,31 @@ class UserController extends Controller
         $user->delete();
         return redirect()->back();
     }
+
+
+    public function updatePassword(Request $request, $id){
+        $password = Input::get('password');
+
+        $oldpassword = User::find($id)->password;
+
+        $newpassword = Input::get('newpassword');
+
+
+
+        if (Hash::check($password, $oldpassword)){
+
+            $user = User::find($id);
+            $user->password = bcrypt($request['newpassword']);
+            $user->save();
+
+            return redirect()->route('profile.show', auth()->user()->id)
+                        ->with('success','password updated successfully');
+
+            //var_dump('password match');
+        }else{
+            var_dump('does not match');
+        }
+        //dd($newpassword);
+    }
+
 }

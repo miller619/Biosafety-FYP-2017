@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use App\Notifications\NewNotificationApplicationSubmitted;
+use App\Notifications\NotificationApplicationStatus;
 use Auth;
 use App\User;
 use App\Notification;
@@ -68,7 +70,7 @@ class AdminController extends Controller
                 $sendData['sendnotifications'] = Notification::where(['approved'=>1])->get();
 
                 $declined = [];
-                $declined['declinedData'] = Notification::where(['approved'=> -1])->get();
+                $declined['declinedData'] = Notification::where(['approved'=> 5])->get();
                     
                 //dd($admin);
                 return view('Notification.notification_admin', compact('admin', 'data', 'approvedData', 'sendData', 'declined'));
@@ -88,11 +90,32 @@ class AdminController extends Controller
         }
 
 
-        public function approveNotification(Request $request, $id){
+        public function approveNotification(Request $request, $user_id, $id){
             
             $notification = Notification::find($id);
             $notification->approved = $request->get('type');
             $notification->save();
+
+            $user = User::find($user_id);
+            $status = $notification->approved;
+            if ($status == 2)
+            {
+                $string = 'Approved';
+                $user->notify(new NotificationApplicationStatus($user->name, $notification->id, $string));
+                return redirect()->route('admin.notification_list');
+            }else if($status == 5){
+                $string = 'Rejected';
+                $user->notify(new NotificationApplicationStatus($user->name, $notification->id, $string));
+                return redirect()->route('admin.notification_list');
+            }else if ($status == 1){
+                $string = 'Sent To SSBC Board Members For Approval';
+                $user->notify(new NotificationApplicationStatus($user->name, $notification->id, $string));
+                return redirect()->route('admin.notification_list'); 
+            }
+
+             
+    }
+
             return redirect()->route('admin.notification_list');
         }
 
@@ -154,5 +177,6 @@ class AdminController extends Controller
             $clearence->save();
             return redirect()->route('Clearence.clearence_admin');
         }
+
 
 }

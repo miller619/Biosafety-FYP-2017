@@ -14,7 +14,7 @@ class AdminsTableSeeder extends Seeder
     {
         DB::table('admins')->insert([
             'name' => 'Admin',
-            'email' => 'admin@yahoo.com',
+            'email' => 'ssbc.swinburne@gmail.com',
             'password' => bcrypt('123456'),
             'adminContact'=>'1234560',
             'adminFax' => '12245123',
@@ -27,35 +27,9 @@ class AdminsTableSeeder extends Seeder
         
         DB::table('admins')->insert([
             'name' => 'admin2',
-            'email' => 'superadmin2@yahoo.com',
+            'email' => 'ahamed_isteaque@yahoo.com',
             'password' => bcrypt('123456'),
             'adminContact'=>'12345602',
-            'adminFax' => '1224512223',
-            'adminRole' => 2,
-            'adminInstitution' => 'swinburne',
-            'adminAddress' => 'Swinburne',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
-
-        DB::table('admins')->insert([
-            'name' => 'admin3',
-            'email' => 'superadmin3@gmail.com',
-            'password' => bcrypt('123456'),
-            'adminContact'=>'12345603',
-            'adminFax' => '1224512223',
-            'adminRole' => 2,
-            'adminInstitution' => 'swinburne',
-            'adminAddress' => 'Swinburne',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
-
-        DB::table('admins')->insert([
-            'name' => 'admin3',
-            'email' => 'superadmin4@yahoo.com',
-            'password' => bcrypt('123456'),
-            'adminContact'=>'12345604',
             'adminFax' => '1224512223',
             'adminRole' => 2,
             'adminInstitution' => 'swinburne',

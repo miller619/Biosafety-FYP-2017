@@ -62,27 +62,26 @@
                                 <span>{{ Auth::user()->name }}</span>
                             </a>
                         </li>
-
                         <li><a href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
                             Logout
                         </a></li>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
-                    </form>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                        
+                        
+                        @endif
+                    </ul>
                     
-                    
-                    @endif
-                </ul>
-                
+                </div>
             </div>
-        </div>
-    </nav>
-    @yield('content')
-</div>
-<!-- Scripts -->
-<script src="{{ asset('js/script.js') }}"></script>
-<script src="{{ asset('js/app.js') }}"></script>
+        </nav>
+        @yield('content')
+    </div>
+    <!-- Scripts -->
+    <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

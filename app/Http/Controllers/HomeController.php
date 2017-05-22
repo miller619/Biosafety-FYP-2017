@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Auth;
 use App\Notification;
@@ -141,7 +142,7 @@ class HomeController extends Controller
         $approvedData['approvednotifications'] = Notification::where(['approved'=>2])->with('user')->where('user_id', Auth::user()->id)->get();
 
         $declined = [];
-        $declined['declinedData'] = Notification::where(['approved'=>2])->with('user')->where('user_id', Auth::user()->id)->get();
+        $declined['declinedData'] = Notification::where(['approved'=>5])->with('user')->where('user_id', Auth::user()->id)->get();
         //dd($approvedData);
         return view('subViews.notification', compact('data', 'approvedData', 'declined'));
     }
@@ -199,5 +200,11 @@ class HomeController extends Controller
     public function getreportFormC(){
         return view('ApplicationForms.ssbc001');
     }
+
+    public function getResetpassword(){
+        return view('user.changePassword');
+    }
+
+    
 
 }
