@@ -25,13 +25,16 @@
           
         </div>
       </div>
-
+      @foreach ($admin['admins'] as $admin)
+      @endforeach
       <div class="card text-center">
         <div class="card-header">
           <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                  @if ($admin->adminRole == 1)
                   <li class="nav-item">
                       <a class="nav-link active" data-toggle="tab" href="#panel1" role="tab">New Applications</a>
                   </li>
+                  @endif
                   <li class="nav-item">
                       <a class="nav-link" data-toggle="tab" href="#panel2" role="tab">Pending Approvals from Super Admin</a>
                   </li>
@@ -47,8 +50,7 @@
               <!--Panel 1-->
               <div class="tab-pane fade" id="panel1" role="tabpanel">
               <br>
-                  @foreach ($admin['admins'] as $admin)
-                  @endforeach
+                  
                   @if ($admin->adminRole == 1)
                   <h2>New Application</h2>
                   <div class="row">

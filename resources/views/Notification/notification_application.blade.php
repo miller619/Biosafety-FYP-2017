@@ -85,9 +85,10 @@
             
             <thead>
               <tr>
+                <th>Material Type</th>
                 <th>Name</th>
                 <th>Risk Level</th>
-                <th>Volume</th>
+                <th>Volume</th>th
                 <th>Quantity</th>
               </tr>
             </thead>
@@ -95,6 +96,7 @@
             <tbody>
               @foreach ($notify as $notification)
               <tr>
+                <td>{{ $notification->material_type }}</td>
                 <td>{{ $notification->item_name }} </td>
                 <td>{{ $notification->risk_level }}</td>
                 <td>{{ $notification->quantity }}</td>

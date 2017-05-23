@@ -70,29 +70,20 @@ Route::prefix('home')->group(function(){
 	Route::prefix('notification')->group(function(){
 		/*show notification main page*/
 		Route::get('/', 'HomeController@getNotificationPage')->name('show.go_to_notification');
-		/*route to lmo_notification_form*/
+		
+		/*route to personal information form for notification*/
 		Route::get('/personal_information_notification_form', 'HomeController@getNotificationForm');
-		/*route to biohazardous material notification form*/
+		
+		/*submit personal information and go to next part of the form*/
 		Route::post('personal_information_notification_form/submit/', 'NotificationController@create')->name('submit.personal_info_for_notification');
 	
-		
+		/*route to material list form for notification application*/
+		//Route::get('personal_information_notification_form/material_list/', 'NotificationController@showMaterialListForm')->name('show.material_List');
 
-		Route::get('/biohazardous_material_notification_form', 'HomeController@getotherNotificationForm')->name('show.biohazardous_material_notification_form');
-		
+		/*submit the material list*/
 		Route::post('/personal_information_notification_form/add_lmo/', 'NotificationTypeAController@create')->name('submit.add_lmo');
-
 		
-
-		
-
-
-	
-		
-
-		
-
-
-
+		/*display the notification application form*/
 		Route::get('/notification_application/{user_id}/{notification_id}', 'NotificationController@getNotificationApplication')->name('show.notification_application');
 	});
 
@@ -159,7 +150,7 @@ Route::prefix('admin')->group(function(){
 	Route::get('/userList', 'AdminController@getuserList')->name('admin.userList');
 	Route::get('/adminProfile', 'AdminController@show2')->name('admin.adminProfile');
 
-	Route::get('/clearence_list/clearence_application/{clearence_id}', 'AdminController@approveClearence')->name('show.approve_clearence_application');
+	Route::get('/clearence_list/clearence_application/{user_id}/{id}', 'AdminController@approveClearence')->name('show.approve_clearence_application');
 
 });
 

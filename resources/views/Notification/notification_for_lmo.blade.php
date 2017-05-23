@@ -10,6 +10,7 @@
 			<li class="sidebar-brand">menu</li>
 		</ul>
 		@include('includes.sidebar')
+
 	</div>
 	
 	<!-- Page content -->
@@ -19,7 +20,7 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="well">
-						<form class="form-horizontal" role="form" method="POST" action="{{ route('submit.add_lmo', $notification->id) }}">
+						<form class="form-horizontal" role="form" method="POST" action="{{ route('submit.add_lmo') }}">
 							{{ csrf_field() }}
 
 							<fieldset>
@@ -43,19 +44,21 @@
 													<table id="addLMOtable" border="1">
 														<thead>
 															<tr>
-																<td>No.</td>
-																<td>Notification ID</td>
-																<td>Name</td>
-																<td>Risk Level</td>
-																<td>Quantity</td>
-																<td>Volume</td>
+																<th>No.</th>
+																<th>Notification ID</th>
+																<th>Material Type</th>
+																<th>Name</th>
+																<th>Risk Level</th>
+																<th>Quantity</th>
+																<th>Volume</th>
 
 															</tr>
 														</thead>
 														<tbody>
 															<tr>
 																<td>1</td>
-																<td><input type="text" name="notification_id" id="notification_id" value="{{$notification->id}}"></td>
+																<td><input type="text" name="notification_id" id="notification_id" value="{{$notification_id}}"></td>
+																<td>{!! Form::text('material_type[]', null, array('id'=>'material_type'))!!}</td>
 																<td>{!! Form::text('item_name[]', null, array('id'=>'item_name'))!!}</td>
 																<td>{!! Form::text('risk_level[]', null, array('id'=>'risk_level'))!!}</td>
 																<td>{!! Form::number('quantity[]', null, array('id'=>'quantity'))!!}</td>
