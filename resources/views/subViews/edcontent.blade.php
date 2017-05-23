@@ -66,7 +66,7 @@
                               @foreach($clearence['clearence'] as $clearence)     
                               <tr>                
                                 <td>{{ $clearence->id }}</td>
-                                <td><a href="">{{ $clearence->user->name }}</a></td>
+                                <td><a href="/home/edcontent/clearence_list_user/Clearence_application_user/{{$clearence->user_id}}/{{$clearence->id}}">{{ $clearence->user->name }}</a></td>
                                 <td>{{$clearence->created_at->todatestring()}}</td>
                                 <td>Approval Pending</td>
                               </tr>
@@ -101,7 +101,7 @@
                                   @foreach($approved['approved'] as $app) 
                                   <tr>                
                                     <td>{{ $app->id }}</td>
-                                    <td><a href=""></a>{{ $app->user->name }}</td>
+                                    <td><a href="/home/edcontent/clearence_list_user/Clearence_application_user/{{$app->user_id}}/{{$app->id}}">{{ $app->user->name }}</a></td>
                                     <td>{{$app->created_at->todatestring()}}</td>
                                     <td>Approved</td>
                                     <td>{{$app->updated_at->todatestring()}}</td>
@@ -137,7 +137,7 @@
                                 
                                 <tr>
                                   <td>{{ $decline->id }}</td>
-                                  <td><a href="">{{ $decline->user->name }}</a></td>
+                                  <td><a href="/home/edcontent/clearence_list_user/Clearence_application_user/{{$decline->user_id}}/{{$decline->id}}">{{ $decline->user->name }}</a></td>
                                   <td>{{$decline->created_at->todatestring()}}</td>
                                   <td>Declined</td>
                                   <td>{{$decline->updated_at->todatestring()}}</td>
@@ -172,7 +172,7 @@
                         @foreach($sendData['sendData'] as $send)    
                             <tr>
                               <td>{{$send->id}}</td>
-                              <td><a href="">{{ $send->user->name}}</a></td>
+                              <td><a href="/home/edcontent/clearence_list_user/Clearence_application_user/{{$send->user_id}}/{{$send->id}}">{{ $send->user->name}}</a></td>
                               <td>{{ $send->created_at}}</td>
                               <td>Approval Pending</td>
                             </tr>

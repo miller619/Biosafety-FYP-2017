@@ -17,109 +17,79 @@
     <!-- Keep all page content within the page-content inset div! -->
     <div class="page-content inset">
       
-      @foreach ($userdetails as $userdetail)
+          @foreach ($userdetails as $userdetail)
       <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <div class="form-group">
-            <strong>Nam:</strong>
-            {{$userdetail->user->name}}
-          </div>
+        <div class="col-xs-6">
+          <strong>Name:</strong><br>{{$userdetail->user->name}}<br><br>
+        </div>
+        <div class="col-xs-6">
+          <strong>Staff/Student ID:</strong><br>{{$userdetail->user->userInstitutionID}}<br><br>
         </div>
       </div>
+
       <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <div class="form-group">
-            <strong>Staff/Student ID: </strong>
-            {{$userdetail->user->userInstitutionID}}
-          </div>
+        <div class="col-xs-6">
+          <strong>Designation:</strong><br>{{$userdetail->user->userDesignation}}<br><br>
+        </div>
+        <div class="col-xs-6">
+          <strong>Faculty:</strong><br>{{$userdetail->user->userFaculty}}<br><br>
         </div>
       </div>
+
+      
       <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <div class="form-group">
-            <strong>Designation:</strong>
-            {{$userdetail->user->userDesignation}}
-          </div>
+        @isset ($userdetail->unit_title)
+        <div class="col-xs-6">
+          <strong>Unit:</strong><br>{{$userdetail->unit_title}}<br><br>
+        </div>
+        @endisset
+
+        @isset ($userdetail->unit_code)
+        <div class="col-xs-6">
+          <strong>Unit Code:</strong><br>{{$userdetail->unit_code}}<br><br>
+        </div>
+        @endisset
+      </div>
+      
+      <div class="row">
+        @isset ($userdetail->project_title)
+        <div class="col-xs-6">
+          <strong>Project title:</strong><br>{{$userdetail->project_title}}<br><br>
+        </div>
+        @endisset
+
+        @isset ($userdetail->project_code)
+        <div class="col-xs-6">
+          <strong>Project Ref Number:</strong><br>{{$userdetail->project_code}}<br><br>
+        </div>
+        @endisset
+      </div>
+
+      <div class="row">
+        <div class="col-xs-6">
+          <strong>Storage Location:</strong><br>{{$userdetail->storage_location}}<br><br>
+        </div>
+      
+        <div class="col-xs-6">
+          <strong>Name of Keeper:</strong><br>{{$userdetail->keeper_name}}<br><br>
         </div>
       </div>
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <div class="form-group">
-            <strong>Faculty:</strong>
-            {{$userdetail->user->userFaculty}}
-          </div>
-        </div>
-      </div>
-      @isset ($userdetail->unit_title)
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <div class="form-group">
-            <strong>Unit:</strong>
-            {{$userdetail->unit_title}}
-          </div>
-        </div>
-      </div>
-      @endisset
-      @isset ($userdetail->unit_code)
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <div class="form-group">
-            <strong>Unit Code:</strong>
-            {{$userdetail->unit_code}}
-          </div>
-        </div>
-      </div>
-      @endisset
-      @isset ($userdetail->project_title)
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <div class="form-group">
-            <strong>Project title:</strong>
-            {{$userdetail->project_title}}
-          </div>
-        </div>
-      </div>
-      @endisset
-      @isset ($userdetail->project_code)
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <div class="form-group">
-            <strong>Project Ref Number:</strong>
-            {{$userdetail->project_code}}
-          </div>
-        </div>
-      </div>
-     @endisset 
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <div class="form-group">
-            <strong>Storage Location:</strong>
-            {{$userdetail->storage_location}}
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <div class="form-group">
-            <strong>Name of Keeper:</strong>
-            {{$userdetail->keeper_name}}
-          </div>
-        </div>
-      </div>
+
+      
       @endforeach
       
       
       <div class="row">
         <div class="col-xs-12">
-          <table border="1">
+          <table class="table table-bordered">
             
             <thead>
               <tr>
-                <td>Material Type</td>
-                <td>Name</td>
-                <td>Risk Level</td>
-                <td>Volume</td>
-                <td>Quantity</td>
+                <th>Material Type</th>
+                <th>Name</th>
+                <th>Risk Level</th>
+                <th>Volume</th>th
+                <th>Quantity</th>
               </tr>
             </thead>
             
@@ -131,7 +101,7 @@
                 <td>{{ $notification->risk_level }}</td>
                 <td>{{ $notification->quantity }}</td>
                 <td>{{ $notification->volume }}</td>
-                <td></td>
+                
               </tr>
               @endforeach
             </tbody>

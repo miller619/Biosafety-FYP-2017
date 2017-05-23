@@ -94,6 +94,28 @@ class HomeController extends Controller
         return view('subViews.edcontent', compact('clearence', 'approved', 'declined', 'sendData'));
     }
 
+    public function adminGetEachClearence_user($user_id, $id){
+        $userdetail = [];
+            $userdetail = EDForm1::where(['user_id'=>$user_id])->where(['id'=>$id])->get();
+            
+             $edform2 = [];
+             $edform2 = EDFormB2::where(['ed_form_id'=>$user_id])->where(['id'=>$id])->get();
+
+             $edform3 = [];
+             $edform3 = EDFormB3::where(['ed_form_id'=>$user_id])->where(['id'=>$id])->get();
+
+             $edform3_2 = [];
+             $edform3_2 = EDFormB3_2::where(['ed_form_id'=>$user_id])->where(['id'=>$id])->get();
+
+             $edform4 = [];
+             $edform4 = EDFormB4::where(['ed_form_id'=>$user_id])->where(['id'=>$id])->get();
+
+            // return response($edform3);
+           
+
+            return view('Clearence.show_submit', compact('userdetail', 'edform2', 'edform3', 'edform3_2', 'edform4'));
+    }
+
     public function getEDFormA()
     {
         return view('ApplicationForms.hirarc');
