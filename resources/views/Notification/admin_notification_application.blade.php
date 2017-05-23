@@ -16,96 +16,64 @@
   <div id="page-content-wrapper">
     <!-- Keep all page content within the page-content inset div! -->
     <div class="page-content inset">
-      
       @foreach ($userdetails as $userdetail)
       <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <div class="form-group">
-            <strong>Name:</strong>
-            {{$userdetail->user->name}}
-          </div>
+        <div class="col-xs-6">
+          <strong>Name:</strong><br>{{$userdetail->user->name}}<br><br>
+        </div>
+        <div class="col-xs-6">
+          <strong>Staff/Student ID:</strong><br>{{$userdetail->user->userInstitutionID}}<br><br>
         </div>
       </div>
+
       <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <div class="form-group">
-            <strong>Staff/Student ID: </strong>
-            {{$userdetail->user->userInstitutionID}}
-          </div>
+        <div class="col-xs-6">
+          <strong>Designation:</strong><br>{{$userdetail->user->userDesignation}}<br><br>
+        </div>
+        <div class="col-xs-6">
+          <strong>Faculty:</strong><br>{{$userdetail->user->userFaculty}}<br><br>
         </div>
       </div>
+
+      
       <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <div class="form-group">
-            <strong>Designation:</strong>
-            {{$userdetail->user->userDesignation}}
-          </div>
+        @isset ($userdetail->unit_title)
+        <div class="col-xs-6">
+          <strong>Unit:</strong><br>{{$userdetail->unit_title}}<br><br>
         </div>
+        @endisset
+
+        @isset ($userdetail->unit_code)
+        <div class="col-xs-6">
+          <strong>Unit Code:</strong><br>{{$userdetail->unit_code}}<br><br>
+        </div>
+        @endisset
       </div>
+      
       <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <div class="form-group">
-            <strong>Faculty:</strong>
-            {{$userdetail->user->userFaculty}}
-          </div>
+        @isset ($userdetail->project_title)
+        <div class="col-xs-6">
+          <strong>Project title:</strong><br>{{$userdetail->project_title}}<br><br>
         </div>
+        @endisset
+
+        @isset ($userdetail->project_code)
+        <div class="col-xs-6">
+          <strong>Project Ref Number:</strong><br>{{$userdetail->project_code}}<br><br>
+        </div>
+        @endisset
       </div>
-      @isset ($userdetail->unit_title)
+
       <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <div class="form-group">
-            <strong>Unit:</strong>
-            {{$userdetail->unit_title}}
-          </div>
+        <div class="col-xs-6">
+          <strong>Storage Location:</strong><br>{{$userdetail->storage_location}}<br><br>
+        </div>
+      
+        <div class="col-xs-6">
+          <strong>Name of Keeper:</strong><br>{{$userdetail->keeper_name}}<br><br>
         </div>
       </div>
-      @endisset
-      @isset ($userdetail->unit_code)
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <div class="form-group">
-            <strong>Unit Code:</strong>
-            {{$userdetail->unit_code}}
-          </div>
-        </div>
-      </div>
-      @endisset
-      @isset ($userdetail->project_title)
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <div class="form-group">
-            <strong>Project title:</strong>
-            {{$userdetail->project_title}}
-          </div>
-        </div>
-      </div>
-      @endisset
-      @isset ($userdetail->project_code)
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <div class="form-group">
-            <strong>Project Ref Number:</strong>
-            {{$userdetail->project_code}}
-          </div>
-        </div>
-      </div>
-     @endisset 
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <div class="form-group">
-            <strong>Storage Location:</strong>
-            {{$userdetail->storage_location}}
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <div class="form-group">
-            <strong>Name of Keeper:</strong>
-            {{$userdetail->keeper_name}}
-          </div>
-        </div>
-      </div>
+
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
           <div class="form-group">
@@ -119,14 +87,14 @@
       
       <div class="row">
         <div class="col-xs-12">
-          <table border="1">
+          <table class="table table-bordered">
             
             <thead>
               <tr>
-                <td>Name</td>
-                <td>Risk Level</td>
-                <td>Volume</td>
-                <td>Quantity</td>
+                <th>Name</th>
+                <th>Risk Level</th>
+                <th>Volume</th>
+                <th>Quantity</th>
               </tr>
             </thead>
             
@@ -149,26 +117,35 @@
       <br/>
       <br/>
       
+      <div class="row">
+
       @if ($userdetail->approved < 2)
+      <div class="col-xs-4">
       {!! Form::open(['method' => 'GET', 'route' => ['show.approve_notification_application', $userdetail->user->id, $userdetail->id], 'style'=>'display:inline']) !!}
         {!! Form::hidden('type', 2) !!}
-        {!! Form::submit('Accpet', ['class' => 'btn btn-success']) !!}
+        {!! Form::submit('Accpet', ['class' => 'btn btn-success btn-block']) !!}
       {!! Form::close() !!}
+      </div>
 
       @if ($userdetail->approved == 0)
+      <div class="col-xs-4">
       {!! Form::open(['method' => 'GET', 'route' => ['show.approve_notification_application', $userdetail->user->id, $userdetail->id], 'style'=>'display:inline']) !!}
         {!! Form::hidden('type', 1) !!}
-        {!! Form::submit('Send to Super Admin', ['class' => 'btn btn-success']) !!}
+        {!! Form::submit('Send to Super Admin', ['class' => 'btn btn-success btn-block']) !!}
       {!! Form::close() !!}
+      </div>
       @endif
 
       @if ($userdetail->approved != -1)
+      <div class="col-xs-4">
       {!! Form::open(['method' => 'GET', 'route' => ['show.approve_notification_application', $userdetail->user->id, $userdetail->id],'style'=>'display:inline']) !!}
       {!! Form::hidden('type', 5) !!}
-        {!! Form::submit('Decline', ['class' => 'btn btn-danger']) !!}
+        {!! Form::submit('Decline', ['class' => 'btn btn-danger btn-block']) !!}
       {!! Form::close() !!}
+      </div>
       @endif
       @endif
+      </div>
     </div>
   </div>
 </div>
