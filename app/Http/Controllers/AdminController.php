@@ -113,14 +113,12 @@ class AdminController extends Controller
                 return redirect()->route('admin.notification_list'); 
             }
 
+
             return redirect()->route('admin.notification_list');
+
 
              
     }
-
-            
-        
-
          public function adminClearenceList(){
                 
                 $admin = [];
