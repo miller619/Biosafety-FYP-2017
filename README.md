@@ -2,7 +2,7 @@
 Final Year Project
 
 This version contain
-1. admin can add add, remove users from the admin panal
+1. admin can add, remove users from the admin panal
 2. seed database for user table and admin table
 3. instructions for seeding database
 
