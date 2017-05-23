@@ -148,7 +148,6 @@
       <br/>
       <br/>
       <br/>
-      
       @if ($userdetail->approved < 2)
       {!! Form::open(['method' => 'GET', 'route' => ['show.approve_notification_application', $userdetail->user->id, $userdetail->id], 'style'=>'display:inline']) !!}
         {!! Form::hidden('type', 2) !!}

@@ -66,32 +66,25 @@ Route::prefix('home')->group(function(){
 	3. fill forms and forms and submit.
 	*/
 	Route::prefix('notification')->group(function(){
-		/*show notification main page*/
+		
+		/*show notification main page with the list of notification applications and link to submit new notifications*/
 		Route::get('/', 'HomeController@getNotificationPage')->name('show.go_to_notification');
-		/*route to lmo_notification_form*/
+		
+		/*view the form to fill personal information for notification application*/
 		Route::get('/personal_information_notification_form', 'HomeController@getNotificationForm');
-		/*route to biohazardous material notification form*/
-		Route::post('personal_information_notification_form/submit/', 'NotificationController@create')->name('submit.personal_info_for_notification');
-	
 		
-
-		Route::get('/biohazardous_material_notification_form', 'HomeController@getotherNotificationForm')->name('show.biohazardous_material_notification_form');
+		/*post personal information and show form to add material*/
+		Route::post('personal_information_notification_form/submit', 'NotificationController@create')->name('submit.personal_info_for_notification');
 		
+		/*Route::get('/biohazardous_material_notification_form', 'HomeController@getotherNotificationForm')->name('show.biohazardous_material_notification_form');*/
+		
+		/*post the material list and route back to the main notification application page*/
 		Route::post('/personal_information_notification_form/add_lmo/', 'NotificationTypeAController@create')->name('submit.add_lmo');
-
-		
-
-		
-
-
-	
-		
-
-		
 
 
 
 		Route::get('/notification_application/{user_id}/{notification_id}', 'NotificationController@getNotificationApplication')->name('show.notification_application');
+
 	});
 
 	Route::prefix('exportinglmo')->group(function(){

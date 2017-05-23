@@ -41,4 +41,5 @@
     </li>
 
     <li><a href="{{ url('/home/annualreport') }}">Annual report</a></li>
+    <li><a href="{{ route('admin.userList') }}">User List</a></li>
 </ul>

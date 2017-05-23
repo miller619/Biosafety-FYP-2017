@@ -39,15 +39,18 @@ function updateRow(row, i, reset) {
     var inp3 = row.cells[3].getElementsByTagName('input')[0];
     var inp4 = row.cells[4].getElementsByTagName('input')[0];
     var inp5 = row.cells[5].getElementsByTagName('input')[0];
+    var inp6 = row.cells[6].getElementsByTagName('input')[0];
+    
     
     inp1.id = 'notification_id' + i;
-    inp2.id = 'name' + i;
-    inp3.id = 'risk_level' + i;
-    inp4.id = 'quantity' + i;
-    inp5.id = 'volume' + i;
+    inp2.id = 'material_type' + i;
+    inp3.id = 'name' + i;
+    inp4.id = 'risk_level' + i;
+    inp5.id = 'quantity' + i;
+    inp6.id = 'volume' + i;
 
     if (reset) {
-        inp2.value = inp3.value = inp4.value = inp5.value = '';
+        inp2.value = inp3.value = inp4.value = inp5.value = inp6.value = '';
     }
     
     return row;

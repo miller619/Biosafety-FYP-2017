@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class NotificationTypeA extends Model
 {
     protected $fillable = [
-        'item_name', 'risk_level', 'quantity', 'volume', 'notification_id',
+        'material_type', 'item_name', 'risk_level', 'quantity', 'volume', 'notification_id',
     ];
 
     public function notification(){

@@ -154,7 +154,10 @@ class HomeController extends Controller
     public function getlmoNotificationForm(){
         return view('Notification.notification_for_lmo');
     }
-    
+
+    public function getMaterialListForNotificationApplication(){
+        return view('Notification.notification_for_lmo');
+    }
 
     public function getExportLmo(){
         return view('subViews.exportlmo');

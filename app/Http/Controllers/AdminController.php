@@ -112,12 +112,12 @@ class AdminController extends Controller
                 $user->notify(new NotificationApplicationStatus($user->name, $notification->id, $string));
                 return redirect()->route('admin.notification_list'); 
             }
-
+return redirect()->route('admin.notification_list');
              
     }
 
-            return redirect()->route('admin.notification_list');
-        }
+            
+        
 
          public function adminClearenceList(){
                 
