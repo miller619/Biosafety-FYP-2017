@@ -45,6 +45,8 @@ Route::prefix('home')->group(function(){
 
 		Route::get('/EDFormB3_2/submit/{id}', 'EDFormB3_2Controller@getEDFormB4')->name('show.fromB4');
 		Route::post('/EDFormB4/Submit', 'EDFormB4Controller@create');
+
+		Route::get('/clearence_list_user/Clearence_application_user/{user_id}/{id}', 'HomeController@adminGetEachClearence_user')->name('Clearence.admin_clearence_application');
 	});
 
 	Route::prefix('bmcontent')->group(function(){
