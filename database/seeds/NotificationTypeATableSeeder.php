@@ -13,6 +13,7 @@ class NotificationTypeATableSeeder extends Seeder
     public function run()
     {
         DB::table('notification_type_as')->insert([
+            'material_type'=>'LMO',
             'item_name' => 'LMO1',
             'risk_level' => 'Low',
             'volume' => '100',
@@ -23,6 +24,7 @@ class NotificationTypeATableSeeder extends Seeder
         ]);
 
         DB::table('notification_type_as')->insert([
+            'material_type'=>'LMO',
             'item_name' => 'LMO2',
             'risk_level' => 'high',
             'volume' => '1000',
@@ -33,6 +35,7 @@ class NotificationTypeATableSeeder extends Seeder
         ]);
 
         DB::table('notification_type_as')->insert([
+            'material_type'=>'LMO',
             'item_name' => 'LMO3',
             'risk_level' => 'Medium',
             'volume' => '500',
@@ -43,6 +46,7 @@ class NotificationTypeATableSeeder extends Seeder
         ]);
 
         DB::table('notification_type_as')->insert([
+            'material_type'=>'Biohazardous Material',
             'item_name' => 'LMO1',
             'risk_level' => 'Low',
             'volume' => '100',
@@ -53,6 +57,7 @@ class NotificationTypeATableSeeder extends Seeder
         ]);
 
         DB::table('notification_type_as')->insert([
+            'material_type'=>'Biohazardous Material',
             'item_name' => 'LMO2',
             'risk_level' => 'high',
             'volume' => '1000',
@@ -63,6 +68,7 @@ class NotificationTypeATableSeeder extends Seeder
         ]);
 
         DB::table('notification_type_as')->insert([
+            'material_type'=>'Biohazardous Material',
             'item_name' => 'LMO3',
             'risk_level' => 'Medium',
             'volume' => '500',
@@ -73,6 +79,7 @@ class NotificationTypeATableSeeder extends Seeder
         ]);
 
         DB::table('notification_type_as')->insert([
+            'material_type'=>'Biohazardous Material',
             'item_name' => 'LMO1',
             'risk_level' => 'Low',
             'volume' => '100',
@@ -83,6 +90,7 @@ class NotificationTypeATableSeeder extends Seeder
         ]);
 
         DB::table('notification_type_as')->insert([
+            'material_type'=>'Biohazardous Material',
             'item_name' => 'LMO2',
             'risk_level' => 'high',
             'volume' => '1000',
@@ -93,6 +101,7 @@ class NotificationTypeATableSeeder extends Seeder
         ]);
 
         DB::table('notification_type_as')->insert([
+            'material_type'=>'Biohazardous Material',
             'item_name' => 'LMO3',
             'risk_level' => 'Medium',
             'volume' => '500',
@@ -103,6 +112,7 @@ class NotificationTypeATableSeeder extends Seeder
         ]);
 
         DB::table('notification_type_as')->insert([
+            'material_type'=>'Biohazardous Material',
             'item_name' => 'LMO4',
             'risk_level' => 'Low',
             'volume' => '100',
@@ -113,6 +123,7 @@ class NotificationTypeATableSeeder extends Seeder
         ]);
 
         DB::table('notification_type_as')->insert([
+            'material_type'=>'LMO',
             'item_name' => 'LMO5',
             'risk_level' => 'Low',
             'volume' => '100',
@@ -122,6 +133,7 @@ class NotificationTypeATableSeeder extends Seeder
             'updated_at' => Carbon::now()
         ]);
         DB::table('notification_type_as')->insert([
+            'material_type'=>'Biohazardous Material',
             'item_name' => 'LMO4',
             'risk_level' => 'Low',
             'volume' => '100',
@@ -132,6 +144,7 @@ class NotificationTypeATableSeeder extends Seeder
         ]);
 
         DB::table('notification_type_as')->insert([
+            'material_type'=>'Biohazardous Material',
             'item_name' => 'LMO5',
             'risk_level' => 'Low',
             'volume' => '100',
@@ -141,6 +154,7 @@ class NotificationTypeATableSeeder extends Seeder
             'updated_at' => Carbon::now()
         ]);
         DB::table('notification_type_as')->insert([
+            'material_type'=>'Biohazardous Material',
             'item_name' => 'LMO4',
             'risk_level' => 'Low',
             'volume' => '100',
@@ -151,6 +165,7 @@ class NotificationTypeATableSeeder extends Seeder
         ]);
 
         DB::table('notification_type_as')->insert([
+            'material_type'=>'Biohazardous Material',
             'item_name' => 'LMO5',
             'risk_level' => 'Low',
             'volume' => '100',
@@ -161,6 +176,7 @@ class NotificationTypeATableSeeder extends Seeder
         ]);
 
         DB::table('notification_type_as')->insert([
+            'material_type'=>'Biohazardous Material',
             'item_name' => 'LMO6',
             'risk_level' => 'Low',
             'volume' => '100',
@@ -171,6 +187,7 @@ class NotificationTypeATableSeeder extends Seeder
         ]);
 
         DB::table('notification_type_as')->insert([
+            'material_type'=>'Biohazardous Material',
             'item_name' => 'LMO6',
             'risk_level' => 'Low',
             'volume' => '100',
@@ -181,6 +198,7 @@ class NotificationTypeATableSeeder extends Seeder
         ]);
 
         DB::table('notification_type_as')->insert([
+            'material_type'=>'Biohazardous Material',
             'item_name' => 'LMO6',
             'risk_level' => 'Low',
             'volume' => '100',

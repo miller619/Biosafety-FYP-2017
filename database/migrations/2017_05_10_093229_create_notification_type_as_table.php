@@ -16,6 +16,7 @@ class CreateNotificationTypeAsTable extends Migration
         Schema::create('notification_type_as', function (Blueprint $table) {
             $table->increments('id');
             
+            $table->string('material_type');
             $table->string('item_name');
             $table->string('risk_level');
             $table->string('quantity');

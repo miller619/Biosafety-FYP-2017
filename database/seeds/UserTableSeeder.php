@@ -29,7 +29,7 @@ class UserTableSeeder extends Seeder
         
         DB::table('users')->insert([
             'name' => 'Madhwa',
-            'email' => 'madhwa@yahoo.com',
+            'email' => 'madhawaudawatta@gmail.com',
             'password' => bcrypt('123456'),
             'userContact'=>'987654',
             'userFax' => '852147',
@@ -44,7 +44,7 @@ class UserTableSeeder extends Seeder
         
         DB::table('users')->insert([
             'name' => 'Dulitha',
-            'email' => 'dulitha@yahoo.com',
+            'email' => 'dulitha60@hotmail.com',
             'password' => bcrypt('123456'),
             'userContact'=>'963258',
             'userFax' => '852369',

@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Notifications\NewNotificationApplicationSubmitted;
 use App\Notifications\NotificationApplicationStatus;
+use App\Notifications\ClearanceExemptDealingApprove;
 use Auth;
 use App\User;
 use App\Notification;
@@ -170,11 +171,29 @@ class AdminController extends Controller
             return view('admin.showAdminProfile', compact('admin'));
         }
 
-        public function approveClearence(Request $request, $id){
+        public function approveClearence(Request $request, $user_id, $id){
             
             $clearence = EDForm1::find($id);
             $clearence->approved = $request->get('type');
             $clearence->save();
+
+
+            $user = User::find($user_id);
+            $status = $clearence->approved;
+            if ($status == 2)
+            {
+                $string = 'Approved';
+                $user->notify(new ClearanceExemptDealingApprove($user->name, $clearence->id, $string));
+                return redirect()->route('admin.notification_list');
+            }else if($status == 5){
+                $string = 'Rejected';
+                $user->notify(new ClearanceExemptDealingApprove($user->name, $clearence->id, $string));
+                return redirect()->route('admin.notification_list');
+            }else if ($status == 1){
+                $string = 'Sent To SSBC Board Members For Approval';
+                $user->notify(new ClearanceExemptDealingApprove($user->name, $clearence->id, $string));
+                return redirect()->route('admin.notification_list'); 
+            }
             return redirect()->route('Clearence.clearence_admin');
         }
 

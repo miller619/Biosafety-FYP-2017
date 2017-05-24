@@ -316,7 +316,7 @@
 <div class="row">
   @if ($userdetail->approved < 2)
   <div class="col-xs-4">
-    {!! Form::open(['method' => 'GET', 'route' => ['show.approve_clearence_application', $userdetail->id], 'style'=>'display:inline']) !!}
+    {!! Form::open(['method' => 'GET', 'route' => ['show.approve_clearence_application', $userdetail->user->id, $userdetail->id], 'style'=>'display:inline']) !!}
         {!! Form::hidden('type', 2) !!}
         {!! Form::submit('Accpet', ['class' => 'btn btn-success btn-block']) !!}
       {!! Form::close() !!}
@@ -324,7 +324,7 @@
   
   @if ($userdetail->approved == 0)  
   <div class="col-xs-4">
-    {!! Form::open(['method' => 'GET', 'route' => ['show.approve_clearence_application', $userdetail->id], 'style'=>'display:inline']) !!}
+    {!! Form::open(['method' => 'GET', 'route' => ['show.approve_clearence_application', $userdetail->user->id, $userdetail->id], 'style'=>'display:inline']) !!}
           {!! Form::hidden('type', 1) !!}
           {!! Form::submit('Send to Super Admin', ['class' => 'btn btn-success btn-block']) !!}
         {!! Form::close() !!}
@@ -333,7 +333,7 @@
 
     @if ($userdetail->approved == 0)
   <div class="col-xs-4">
-    {!! Form::open(['method' => 'GET', 'route' => ['show.approve_clearence_application', $userdetail->id],'style'=>'display:inline']) !!}
+    {!! Form::open(['method' => 'GET', 'route' => ['show.approve_clearence_application', $userdetail->user->id, $userdetail->id],'style'=>'display:inline']) !!}
         {!! Form::hidden('type', -1) !!}
           {!! Form::submit('Decline', ['class' => 'btn btn-danger btn-block']) !!}
         {!! Form::close() !!}
